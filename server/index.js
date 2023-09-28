@@ -1,18 +1,20 @@
-import express from 'express';
-const app = express();
-const PORT = process.env.PORT || 3001;
+import 'dotenv/config';
+import { sequelize } from './src/database/db.js';
+import app from './src/app.js';
 
-// Ruta principal del servidor
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+const {PORT} = process.env;
 
-// Ruta principal de la api
-app.get("/api", (req, res) => {
-  res.json({ message: "Hola desde la api del servidor!" });
-});
+const main = async () => {
+  try {
+    await sequelize.authenticate();
+    console.log('Connection has been established succesfully.');
+    // Se conecta al servidor
+    app.listen(PORT, () => {
+      console.log(`Server listening on port ${PORT}`)
+    });
+  } catch (error) {
+    console.error('Unable to connect to the database:', error);
+  }
+};
 
-// Confirmación del puerto
-app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`)
-})
+main();
