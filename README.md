@@ -13,3 +13,6 @@ npm install
 ```
 npm start
 ```
+
+## Estructura de la base de datos:
+![Modelo de datos](./server/src/database/tugymbro.png)
