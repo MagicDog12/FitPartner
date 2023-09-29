@@ -5,7 +5,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import { API_URL } from '../auth/constants';
 
 export const Login = () => {
-    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorResponse, setErrorResponse] = useState("");
 
@@ -19,7 +19,7 @@ export const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (username === "" || password === "") {
+        if (email === "" || password === "") {
             setErrorResponse("Llenar todos los campos");
             return;
         }
@@ -30,12 +30,14 @@ export const Login = () => {
                     "Content-Type": "application/JSON"
                 },
                 body: JSON.stringify({
-                    username,
+                    email,
                     password
                 })
             })
             if (response.ok) {
                 console.log("El usuario inició sesión correctamente");
+                const json = await response.json();
+                console.log(json.body);
                 setErrorResponse("");
                 goTo('/');
             } else {
@@ -54,11 +56,11 @@ export const Login = () => {
                 <h1>Tu Gym Bro</h1>
                 {!!errorResponse && <div className='errorMessage'>{errorResponse}</div>}
                 <form className='formulario' onSubmit={handleSubmit}>
-                    <label>Nombre de usuario</label>
+                    <label>Correo</label>
                     <input
                         type="text"
-                        value={username}
-                        onChange={e => { setUsername(e.target.value) }}
+                        value={email}
+                        onChange={e => { setEmail(e.target.value) }}
                     />
                     <label>Contraseña</label>
                     <input
