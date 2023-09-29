@@ -2,6 +2,7 @@ import 'dotenv/config';
 import { sequelize } from './src/database/db.js';
 import app from './src/app.js';
 
+
 const {PORT} = process.env;
 
 const main = async () => {
