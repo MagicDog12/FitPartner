@@ -36,10 +36,12 @@ export const Login = () => {
             })
             if (response.ok) {
                 console.log("El usuario inició sesión correctamente");
-                const json = await response.json();
-                console.log(json.body);
                 setErrorResponse("");
-                goTo('/');
+                const json = await response.json();
+                if(json.body.accessToken && json.body.refreshToken){
+                    auth.saveUser(json);
+                }
+                goTo('/home');
             } else {
                 console.log("Algo ocurrió");
                 const json = await response.json();
