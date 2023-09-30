@@ -2,13 +2,10 @@ import './Home.css';
 import { useAuth } from "../auth/AuthProvider";
 import { useEffect, useState } from 'react';
 import { API_URL } from '../auth/constants';
+import { MenuLayout } from "../layout/MenuLayout";
 
 export const Home = () => {
     const [todos, setTodos] = useState([]);
-
-    const handleLogout = () => {
-        localStorage.setItem("token", "");
-    };
 
     useEffect(() => {
         loadTodos();
@@ -41,11 +38,12 @@ export const Home = () => {
 
     return (
         <>
-            <div className='home'>
-                <h1>Bienvenido {email} a TuGymBro</h1>
-                {todos.map((todo) => (<div key={todo.id}>{todo.title}</div>))}
-                <button onClick={handleLogout}>Cerrar Sesión</button>
-            </div>
+            <MenuLayout>
+                <div className='home'>
+                    <h1>Bienvenido {email} a TuGymBro</h1>
+                    {todos.map((todo) => (<div key={todo.id}>{todo.title}</div>))}
+                </div>
+            </MenuLayout>
         </>
     )
 };

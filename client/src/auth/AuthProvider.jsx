@@ -6,13 +6,15 @@ const AuthContext = createContext({
     getAccessToken: () => { },
     saveUser: (userData) => { },
     getRefreshToken: () => { },
-    getUser: () => { }
+    getUser: () => { },
+    logout: () => {}
 });
 
 export const AuthProvider = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [accessToken, setAccessToken] = useState("");
     const [user, setUser] = useState();
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         checkAuth();
@@ -68,7 +70,16 @@ export const AuthProvider = ({ children }) => {
 
     const checkAuth = async () => {
         if (accessToken) {
-            // EL usuario está autenticado
+            const userInfo = await getUserInfo(accessToken);
+                    if (userInfo) {
+                        saveSessionInfo(
+                            userInfo,
+                            accessToken,
+                            getRefreshToken()
+                        );
+                        setIsLoading(false);
+                        return ;
+                    }
         } else {
             const token = getRefreshToken();
             if (token) {
@@ -81,10 +92,20 @@ export const AuthProvider = ({ children }) => {
                             newAccessToken,
                             token
                         );
+                        setIsLoading(false);
+                        return ;
                     }
                 }
             }
         }
+        setIsLoading(false);
+    };
+
+    const logout = () => {
+        setIsAuthenticated(false);
+        setAccessToken("");
+        setUser(undefined);
+        localStorage.removeItem("token");
     };
 
     const saveSessionInfo = (userInfo, accessToken, refreshToken) => {
@@ -120,8 +141,8 @@ export const AuthProvider = ({ children }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ isAuthenticated, getAccessToken, saveUser, getRefreshToken, getUser }}>
-            {children}
+        <AuthContext.Provider value={{ isAuthenticated, getAccessToken, saveUser, getRefreshToken, getUser, logout }}>
+            {isLoading ? <div>Loading...</div> : children}
         </AuthContext.Provider>
     );
 };

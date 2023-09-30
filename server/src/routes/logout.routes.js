@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import { deleteUser } from '../controllers/users.controllers.js';
+import { logout } from '../controllers/users.controllers.js';
 
 const router = Router();
 
-router.delete('/:id', deleteUser);
+router.delete('/', logout);
 
 export default router;
