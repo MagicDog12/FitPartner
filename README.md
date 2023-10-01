@@ -1,7 +1,7 @@
 # Fit Partner
 
 ## Stack del proyecto:
-El backend del proyecto se construyo con *Nodejs*, *Express* y *Sequelize*. Mientras que el frontend del proyecto se construyo con *React*. El principal lenguaje de programación utilizado en la estructura de este proyecto es *Javascript*.
+El backend del proyecto se construyo con *Nodejs*, *Express* y *Sequelize*. Mientras que el frontend del proyecto se construyo con *React*. El principal lenguaje de programación utilizado en la estructura de este proyecto es *Javascript*. Para la base de datos se usó PostgreSQL.
 
 ## Iniciar el proyecto:
 Para iniciar el proyecto es necesario usar Nodejs versión 16 y seguir los siguientes pasos:
