@@ -12,13 +12,11 @@ if (envFound.error) {
 export default {
   port: parseInt(process.env.PORT, 10),
 
-  dbCredentials: {
-    name: process.env.DB_NAME,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSW,
-    host: process.env.DB_HOST,
-    port: process.env.DB_PORT
-  },
+  dbName: process.env.DB_NAME,
+  dbUser: process.env.DB_USER,
+  dbPassword: process.env.DB_PASSW,
+  dbHost: process.env.DB_HOST,
+  dbPort: process.env.DB_PORT,
 
   jwtAlgorithm: process.env.JWT_ALGO,
   jwtAccessTokenSecret: process.env.ACCESS_TOKEN_SECRET,

@@ -55,7 +55,7 @@ export const Login = () => {
     return (
         <>
             <section>
-                <h1>Tu Gym Bro</h1>
+                <h1>Fit Partner</h1>
                 {!!errorResponse && <div className='errorMessage'>{errorResponse}</div>}
                 <form className='formulario' onSubmit={handleSubmit}>
                     <label>Correo</label>

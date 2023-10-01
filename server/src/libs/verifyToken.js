@@ -1,9 +1,10 @@
 import jwt from "jsonwebtoken";
+import config from "../config/config.js";
 
 export const verifyAccessToken = (token) => {
-    return jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+    return jwt.verify(token, config.jwtAccessTokenSecret);
 };
 
 export const verifyRefreshToken = (token) => {
-    return jwt.verify(token, process.env.REFRESH_TOKEN_SECRET);
+    return jwt.verify(token, config.jwtRefreshTokenSecret);
 };

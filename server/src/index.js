@@ -1,4 +1,4 @@
-import config from './config/index.js';
+import config from './config/config.js';
 import { sequelize } from './database/db.js';
 import express from 'express';
 import cors from 'cors';
@@ -6,13 +6,13 @@ import morgan from 'morgan';
 
 import { apiRouter } from "./routes/index.routes.js";
 
-// import { Token } from './src/models/Token.js';
-// import { User } from './src/models/User.js';
-// import { Follow } from './src/models/Follow.js';
-// import { Exercise} from './src/models/Exercise.js';
-// import { Like_post } from './src/models/Like_post.js';
-// import { Post } from './src/models/Post.js';
-// import { Training } from './src/models/Training.js';
+// import { Token } from './models/Token.js';
+// import { User } from './models/User.js';
+// import { Follow } from './models/Follow.js';
+// import { Exercise} from './models/Exercise.js';
+// import { Like_post } from './models/Like_post.js';
+// import { Post } from './models/Post.js';
+// import { Training } from './models/Training.js';
 
 const app = express();
 

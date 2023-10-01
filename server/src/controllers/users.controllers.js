@@ -3,7 +3,6 @@ import { jsonResponse } from '../libs/jsonResponse.js';
 
 export const getUser = async (req, res) => {
     try {
-        console.log("getting user");
         res.status(200).json(jsonResponse(200, req.user));
     } catch (error) {
         return res.status(500).json(jsonResponse(500, { error: error.message }));

@@ -5,13 +5,47 @@ import bcrypt from 'bcrypt';
 import { generateAccessToken, generateRefreshToken, getTokenFromHeader } from '../libs/auth.js';
 import { verifyRefreshToken } from "../libs/verifyToken.js";
 
+
+const createUser = async (username, email, password) => {
+    const newUser = await User.create({
+        username,
+        email,
+        password
+    });
+    return newUser;
+};
+
 const getUserByEmail = async (email) => {
     const data = await User.findOne({
         where: { email },
         attributes: ['id', 'email', 'password']
     });
     return data;
-}
+};
+
+const createToken = async (token) => {
+    const newToken = await Token.create({
+        token,
+    });
+    return newToken;
+};
+
+const getToken = async (token) => {
+    const data = await Token.findOne({
+        where: {
+            token,
+        }
+    });
+    return data
+};
+
+const deleteToken = async (token) => {
+    await Token.destroy({
+        where: {
+            token,
+        }
+    });
+};
 
 export const login = async (req, res) => {
     try {
@@ -40,9 +74,7 @@ export const login = async (req, res) => {
         const newUser = { id: user.id, email: user, email };
         const accessToken = generateAccessToken(newUser);
         const refreshToken = generateRefreshToken(newUser);
-        await Token.create({
-            token: refreshToken,
-        });
+        await createToken(refreshToken);
         res.status(200).json(jsonResponse(200, { user: newUser, accessToken, refreshToken }));
     } catch (error) {
         return res.status(500).json(jsonResponse(500, { error: error.message }));
@@ -68,11 +100,7 @@ export const signup = async (req, res) => {
         // Encriptación
         const salt = await bcrypt.genSalt(10);
         const hashPassword = await bcrypt.hash(password, salt);
-        await User.create({
-            username,
-            email,
-            password: hashPassword
-        });
+        await createUser(username, email, hashPassword);
         res.status(200).json(jsonResponse(200, { message: 'User created successfully.' }));
     } catch (error) {
         return res.status(500).json(jsonResponse(500, { error: error.message }));
@@ -83,11 +111,7 @@ export const refreshToken = async (req, res) => {
     try {
         const refreshToken = getTokenFromHeader(req.headers);
         if (refreshToken) {
-            const found = await Token.findOne({
-                where: {
-                    token: refreshToken,
-                }
-            });
+            const found = await getToken(refreshToken);
             if (!found) {
                 return res.status(401).json(jsonResponse(401, { error: "Unauthorized1" }));
             }
@@ -111,12 +135,7 @@ export const logout = async (req, res) => {
         console.log("cerrando sesion");
         const refreshToken = getTokenFromHeader(req.headers);
         if (refreshToken) {
-            console.log(refreshToken);
-            await Token.destroy({
-                where: {
-                    token: refreshToken
-                }
-            });
+            await deleteToken(refreshToken);
             res.status(200).json(jsonResponse(200, { message: 'Token deleted.' }));
         }
     } catch (error) {

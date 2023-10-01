@@ -1,11 +1,12 @@
 import jwt from "jsonwebtoken";
+import config from '../config/config.js'
 
 const sign = (payload, isAccessToken) => {
     return jwt.sign(
         payload,
         isAccessToken
-            ? process.env.ACCESS_TOKEN_SECRET
-            : process.env.REFRESH_TOKEN_SECRET,
+            ? config.jwtAccessTokenSecret
+            : config.jwtRefreshTokenSecret,
         {
             algorithm: 'HS256',
             expiresIn: 3600

@@ -16,7 +16,7 @@ npm install
 ```
 3. Iniciar el servidor y el cliente en las carpetas de **/server** y **/client** usando:
 ```
-npm start
+npm run start
 ```
 
 ## Estructura de la base de datos:

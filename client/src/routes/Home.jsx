@@ -40,7 +40,7 @@ export const Home = () => {
         <>
             <MenuLayout>
                 <div className='home'>
-                    <h1>Bienvenido {email} a TuGymBro</h1>
+                    <h1>Hola {email}, bienvenido a Fit Partner</h1>
                     {todos.map((todo) => (<div key={todo.id}>{todo.title}</div>))}
                 </div>
             </MenuLayout>
