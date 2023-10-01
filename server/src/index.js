@@ -4,6 +4,8 @@ import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 
+import { apiRouter } from "./routes/index.routes.js";
+
 // import { Token } from './src/models/Token.js';
 // import { User } from './src/models/User.js';
 // import { Follow } from './src/models/Follow.js';
@@ -11,8 +13,6 @@ import morgan from 'morgan';
 // import { Like_post } from './src/models/Like_post.js';
 // import { Post } from './src/models/Post.js';
 // import { Training } from './src/models/Training.js';
-
-import { apiRouter } from "./routes/index.routes.js";
 
 const app = express();
 

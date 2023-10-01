@@ -1,6 +1,6 @@
-import { getTokenFromHeader } from "./auth.js";
+import { getTokenFromHeader } from "../libs/auth.js";
 import { jsonResponse } from '../libs/jsonResponse.js';
-import { verifyAccessToken } from "./verifyToken.js";
+import { verifyAccessToken } from "../libs/verifyToken.js";
 
 export const authenticate = (req, res, next) => {
     let token = getTokenFromHeader(req.headers);

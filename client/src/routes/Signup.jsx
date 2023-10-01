@@ -26,7 +26,7 @@ export const Signup = () => {
             return;
         }
         try {
-            const response = await fetch(`${API_URL}/signup`, {
+            const response = await fetch(`${API_URL}/auth/signup`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/JSON"

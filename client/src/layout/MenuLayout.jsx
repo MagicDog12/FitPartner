@@ -12,7 +12,7 @@ export const MenuLayout = ({ children }) => {
     const handleLogout = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch(`${API_URL}/logout`, {
+            const response = await fetch(`${API_URL}/auth/logout`, {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",
