@@ -1,5 +1,5 @@
 import { getTokenFromHeader } from "./auth.js";
-import { jsonResponse } from '../lib/jsonResponse.js';
+import { jsonResponse } from '../libs/jsonResponse.js';
 import { verifyAccessToken } from "./verifyToken.js";
 
 export const authenticate = (req, res, next) => {

@@ -1,4 +1,4 @@
-import { jsonResponse } from '../lib/jsonResponse.js';
+import { jsonResponse } from '../libs/jsonResponse.js';
 
 export const todos = async (req, res) => {
     try {

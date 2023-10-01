@@ -5,7 +5,8 @@
   "main": "src/index.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon",
+    "start": "node src/index",
+    "dev": "nodemon index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -21,7 +22,9 @@
     "morgan": "^1.10.0",
     "pg": "^8.11.3",
     "pg-hstore": "^2.3.4",
-    "sequelize": "^6.33.0"
+    "reflect-metadata": "^0.1.13",
+    "sequelize": "^6.33.0",
+    "winston": "^3.10.0"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"

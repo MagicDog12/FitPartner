@@ -1,6 +1,8 @@
 import config from './config/index.js';
 import { sequelize } from './database/db.js';
-import app from './app.js';
+import express from 'express';
+import cors from 'cors';
+import morgan from 'morgan';
 
 // import { Token } from './src/models/Token.js';
 // import { User } from './src/models/User.js';
@@ -10,7 +12,19 @@ import app from './app.js';
 // import { Post } from './src/models/Post.js';
 // import { Training } from './src/models/Training.js';
 
-const main = async () => {
+import { apiRouter } from "./routes/index.routes.js";
+
+const app = express();
+
+// Uso de middlewares
+app.use(morgan("dev"));
+app.use(cors());
+app.use(express.json()); // si recibe un body lo parsea a JSON
+
+// Ruta principal
+app.use("/api", apiRouter);
+
+const startServer = async () => {
   try {
     await sequelize.sync({force: false});
     console.log('Connection has been established succesfully.');
@@ -23,4 +37,4 @@ const main = async () => {
   }
 };
 
-main();
+startServer();

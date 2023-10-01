@@ -1,6 +1,6 @@
 import { User } from "../models/User.js";
 import { Token } from "../models/Token.js";
-import { jsonResponse } from '../lib/jsonResponse.js';
+import { jsonResponse } from '../libs/jsonResponse.js';
 import bcrypt from 'bcrypt';
 import { generateAccessToken, generateRefreshToken, getTokenFromHeader } from './auth.js';
 import { verifyRefreshToken } from "./verifyToken.js";
