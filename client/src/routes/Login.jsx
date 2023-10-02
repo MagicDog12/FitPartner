@@ -78,6 +78,7 @@ export const Login = () => {
                                     type={"password"}
                                 />
                             </div>
+                            {!!errorResponse && <div className='errorMessage'>{errorResponse}</div>}
                             <div className='mt-8 flex justify-between items-center'>
                                 <div>
                                     <input type="checkbox" id='remember' />
@@ -90,7 +91,7 @@ export const Login = () => {
                                     className='active:scale-[.98] active:duration-75 transition-all hover:scale-[1.01]  ease-in-out transform py-4 bg-violet-500 rounded-xl text-white font-bold text-lg'>Iniciar sesión</button>
                             </div>
                             <div className='mt-8 flex justify-center items-center'>
-                                <p className='font-medium text-base'>¿No tienes una cuenta?</p>
+                                <p className='mr-8 font-medium text-base'>¿No tienes una cuenta?</p>
                                 <ButtonLink to='/signup' className='ml-2 font-medium text-base text-violet-500'>Crear cuenta nueva</ButtonLink>
                             </div>
                         </form>
