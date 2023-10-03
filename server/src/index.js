@@ -6,13 +6,13 @@ import morgan from 'morgan';
 
 import { apiRouter } from "./routes/index.routes.js";
 
-import { Token } from './models/Token.js';
-import { User } from './models/User.js';
-import { Follow } from './models/Follow.js';
-import { Exercise} from './models/Exercise.js';
-import { Like_post } from './models/Like_post.js';
-import { Post } from './models/Post.js';
-import { Training } from './models/Training.js';
+// import { Token } from './models/Token.js';
+// import { User } from './models/User.js';
+// import { Follow } from './models/Follow.js';
+// import { Exercise} from './models/Exercise.js';
+// import { Like_post } from './models/Like_post.js';
+// import { Post } from './models/Post.js';
+// import { Training } from './models/Training.js';
 
 const app = express();
 
@@ -26,7 +26,7 @@ app.use("/api", apiRouter);
 
 const startServer = async () => {
   try {
-    await sequelize.sync({force: true});
+    await sequelize.sync({force: false});
     console.log('Connection has been established succesfully.');
     // Se conecta al servidor
     app.listen(config.port, () => {
