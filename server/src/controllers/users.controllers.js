@@ -20,6 +20,7 @@ export const updateUser = async (req, res) => {
         await user.save();
         res.json(user);
     } catch (error) {
-        return res.status(500).json({ message: error.message });
+        console.error(error.message)
+        return res.status(500).json({ message: 'Error de servidor' });
     }
 };

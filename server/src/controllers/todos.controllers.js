@@ -15,6 +15,7 @@ export const todos = async (req, res) => {
             },
         ]);
     } catch (error) {
-        return res.status(500).json(jsonResponse(500, { error: error.message }));
+        console.error(error.message)
+        return res.status(500).json(jsonResponse(500, { error: 'Error de servidor' }));
     }
 };

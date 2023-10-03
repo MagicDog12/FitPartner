@@ -29,3 +29,4 @@ Se implementa una base de la aplicación con registro de usuarios e inicio de se
 Lista de cosas por hacer:
 1. Se necesita crear una validación en el client y en el server de los inputs de username, email y password.
 2. Se necesita crear el flujo de recuperar contraseña enviando un correo con un link (usando tokens) para cambiar la contraseña.
+3. Se incorporará css con tailwind para mejorar la interfaz de usuario en las pestañas de login, registro, recuperar contraseña e inicio.

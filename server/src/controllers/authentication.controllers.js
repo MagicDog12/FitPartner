@@ -53,21 +53,21 @@ export const login = async (req, res) => {
         // Caso: No hay datos para crear usuario
         if (!!!email || !!!password) {
             return res.status(400).json(jsonResponse(400, {
-                error: 'Fields are required.'
+                error: 'Llenar todos los campos'
             }));
         }
         // Caso: No hay ningun correo registrado
         const user = await getUserByEmail(email);
         if (!user) {
             return res.status(400).json(jsonResponse(400, {
-                error: 'Wrong credentials.'
+                error: 'Credenciales incorrectas'
             }));
         }
         // Caso: La contraseña no coincide
         const isPassword = await bcrypt.compare(password, user.password);
         if (!isPassword) {
             return res.status(400).json(jsonResponse(400, {
-                error: 'Wrong credentials.'
+                error: 'Credenciales incorrectas'
             }));
         }
         // Creamos el token
@@ -77,7 +77,8 @@ export const login = async (req, res) => {
         await createToken(refreshToken);
         res.status(200).json(jsonResponse(200, { user: newUser, accessToken, refreshToken }));
     } catch (error) {
-        return res.status(500).json(jsonResponse(500, { error: error.message }));
+        console.error(error.message);
+        return res.status(500).json(jsonResponse(500, { error: 'Error de servidor' }));
     }
 };
 
@@ -87,23 +88,24 @@ export const signup = async (req, res) => {
         // Caso: No hay datos para crear usuario
         if (!!!username || !!!email || !!!password) {
             return res.status(400).json(jsonResponse(400, {
-                error: 'Fields are required.'
+                error: 'Llenar todos los campos'
             }));
         }
         // Caso: Correo ya está registrado
         const userExist = await getUserByEmail(email);
         if (userExist) {
             return res.status(400).json(jsonResponse(400, {
-                error: 'User already exist.'
+                error: 'Usuario ya existe'
             }));
         }
         // Encriptación
         const salt = await bcrypt.genSalt(10);
         const hashPassword = await bcrypt.hash(password, salt);
         await createUser(username, email, hashPassword);
-        res.status(200).json(jsonResponse(200, { message: 'User created successfully.' }));
+        res.status(200).json(jsonResponse(200, { message: 'Usuario creado satisfactoriamente' }));
     } catch (error) {
-        return res.status(500).json(jsonResponse(500, { error: error.message }));
+        console.error(error.message);
+        return res.status(500).json(jsonResponse(500, { error: 'Error de servidor' }));
     }
 };
 
@@ -113,32 +115,33 @@ export const refreshToken = async (req, res) => {
         if (refreshToken) {
             const found = await getToken(refreshToken);
             if (!found) {
-                return res.status(401).json(jsonResponse(401, { error: "Unauthorized1" }));
+                return res.status(401).json(jsonResponse(401, { error: "Usuario no autorizado" }));
             }
             const payload = verifyRefreshToken(found.token);
             if (payload) {
                 const accessToken = generateAccessToken(payload.user);
                 return res.status(200).json(jsonResponse(200, { accessToken }));
             } else {
-                return res.status(401).json(jsonResponse(401, { error: "Unauthorized2" }));
+                return res.status(401).json(jsonResponse(401, { error: "Usuario no autorizado" }));
             }
         } else {
-            return res.status(401).json(jsonResponse(401, { error: "Unauthorized3" }));
+            return res.status(401).json(jsonResponse(401, { error: "Usuario no autorizado" }));
         }
     } catch (error) {
-        return res.status(500).json(jsonResponse(500, { error: error.message }));
+        console.error(error.message);
+        return res.status(500).json(jsonResponse(500, { error: 'Error de servidor' }));
     }
 };
 
 export const logout = async (req, res) => {
     try {
-        console.log("cerrando sesion");
         const refreshToken = getTokenFromHeader(req.headers);
         if (refreshToken) {
             await deleteToken(refreshToken);
-            res.status(200).json(jsonResponse(200, { message: 'Token deleted.' }));
+            res.status(200).json(jsonResponse(200, { message: 'Token eliminado' }));
         }
     } catch (error) {
-        return res.status(500).json(jsonResponse(500, { error: error.message }));
+        console.error(error.message);
+        return res.status(500).json(jsonResponse(500, { error: 'Error de servidor' }));
     }
 };
