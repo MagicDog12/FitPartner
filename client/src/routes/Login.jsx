@@ -56,10 +56,10 @@ export const Login = () => {
         <>
             <div className="flex w-full h-screen">
                 <div className="w-full flex items-center justify-center lg:w-1/2">
-                    <div className=' w-11/12 max-w-[700px] px-10 py-20 rounded-3xl bg-white border-2 border-gray-100'>
-                        <h1 className='text-5xl font-semibold'>Fit Partner</h1>
-                        <p className='font-medium text-lg text-gray-500 mt-4'>Bienvenido! Por favor ingresa tus datos.</p>
-                        <form className='mt-8' onSubmit={handleSubmit}>
+                    <div className='lg:w-11/12 max-w-[700px] px-10 py-10 absolute inset-2 lg:static rounded-3xl bg-white border-2 border-gray-100'>
+                        <h1 className='text-5xl font-semibold text-center'>Fit Partner</h1>
+                        <p className='font-medium text-lg text-gray-500 mt-4 text-center'>Bienvenido! <br></br> Por favor ingresa tus datos.</p>
+                        <form className='mt-1 lg:mt-8' onSubmit={handleSubmit}>
                             <div className='flex flex-col'>
                                 <label className='text-lg font-medium'>Correo electrónico</label>
                                 <input
@@ -79,20 +79,20 @@ export const Login = () => {
                                 />
                             </div>
                             {!!errorResponse && <div className='errorMessage'>{errorResponse}</div>}
-                            <div className='mt-8 flex justify-between items-center'>
+                            <div className='mt-3 lg:mt-8 flex justify-between items-center'>
                                 <div>
                                     <input type="checkbox" id='remember' />
-                                    <label className='ml-2 font-medium text-base' for="remember">Recuérdame por 30 días</label>
+                                    <label className='ml-2 font-medium text-sm' htmlFor="remember">Recuérdame por 30 días</label>
                                 </div>
-                                <button className='font-medium text-base text-violet-500'>¿Olvidaste tu contraseña?</button>
+                                <ButtonLink to='/forgot-password' tailwind='font-medium text-sm text-violet-800' >¿Olvidaste tu contraseña?</ButtonLink>
                             </div>
-                            <div className='mt-8 flex flex-col gap-y-4'>
+                            <div className='mt-3 lg:mt-8 flex flex-col gap-y-4'>
                                 <button
                                     className='active:scale-[.98] active:duration-75 transition-all hover:scale-[1.01]  ease-in-out transform py-4 bg-violet-500 rounded-xl text-white font-bold text-lg'>Iniciar sesión</button>
                             </div>
-                            <div className='mt-8 flex justify-center items-center'>
+                            <div className='mt-3 lg:mt-8 flex justify-center items-center'>
                                 <p className='mr-8 font-medium text-base'>¿No tienes una cuenta?</p>
-                                <ButtonLink to='/signup' className='ml-2 font-medium text-base text-violet-500'>Crear cuenta nueva</ButtonLink>
+                                <ButtonLink to='/signup' tailwind='ml-2 font-medium text-base text-violet-800'>Crear cuenta nueva</ButtonLink>
                             </div>
                         </form>
                     </div>
