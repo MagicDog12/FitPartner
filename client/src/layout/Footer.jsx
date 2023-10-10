@@ -36,7 +36,7 @@ export const Footer = () => {
                         <h6 className='font-medium text-gray-400'>Desarrollador:</h6>
                         <ul>
                             <li className='py-2 text-sm'>Cristian Durán</li>
-                            <li className='py-2 text-sm'>+569 66413818</li>
+                            <li className='py-2 text-sm'>Estudiante de Ingeniería Civil en Computación <br /> de la Universidad de Chile</li>
                             <li className='py-2 text-sm'>cristian.duran@ing.uchile.cl</li>
                         </ul>
                     </div>
