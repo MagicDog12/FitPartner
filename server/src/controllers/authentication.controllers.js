@@ -138,7 +138,7 @@ export const logout = async (req, res) => {
         const refreshToken = getTokenFromHeader(req.headers);
         if (refreshToken) {
             await deleteToken(refreshToken);
-            res.status(200).json(jsonResponse(200, { message: 'Token eliminado' }));
+            return res.status(200).json(jsonResponse(200, { message: 'Token eliminado' }));
         }
     } catch (error) {
         console.error(error.message);
