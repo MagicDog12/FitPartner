@@ -47,6 +47,22 @@ const deleteToken = async (token) => {
     });
 };
 
+const checkEmail = (email) => {
+    const validEmail = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
+    return validEmail.test(email);
+}
+
+const checkPassword = (password) => {
+    const validPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+    return validPassword.test(password);
+}
+
+const checkUsername = (username) => {
+    const validUserName = /^[a-zA-Z0-9_.]+$/;
+    return validUserName.test(username);
+
+}
+
 export const login = async (req, res) => {
     try {
         const { email, password } = req.body;
@@ -54,6 +70,17 @@ export const login = async (req, res) => {
         if (!!!email || !!!password) {
             return res.status(400).json(jsonResponse(400, {
                 error: 'Llenar todos los campos'
+            }));
+        }
+        // Caso: Datos no cumplen el formato
+        if (!checkEmail(email)) {
+            return res.status(400).json(jsonResponse(400, {
+                error: 'Email no cumple el formato'
+            }));
+        }
+        if (!checkPassword(password)) {
+            return res.status(400).json(jsonResponse(400, {
+                error: 'Contraseña no cumple el formato'
             }));
         }
         // Caso: No hay ningun correo registrado
@@ -89,6 +116,22 @@ export const signup = async (req, res) => {
         if (!!!username || !!!email || !!!password) {
             return res.status(400).json(jsonResponse(400, {
                 error: 'Llenar todos los campos'
+            }));
+        }
+        // Caso: Datos no cumplen el formato
+        if (!checkUsername(username)) {
+            return res.status(400).json(jsonResponse(400, {
+                error: 'Nombre de usuario no cumple el formato'
+            }));
+        }
+        if (!checkEmail(email)) {
+            return res.status(400).json(jsonResponse(400, {
+                error: 'Email no cumple el formato'
+            }));
+        }
+        if (!checkPassword(password)) {
+            return res.status(400).json(jsonResponse(400, {
+                error: 'Contraseña no cumple el formato'
             }));
         }
         // Caso: Correo ya está registrado
