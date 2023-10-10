@@ -1,13 +1,5 @@
-import { useAuth } from "../auth/AuthProvider";
-import { ButtonLink } from "../components/ButtonLink";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
-import {
-    FaLinkedin,
-    FaTelegramPlane,
-    FaGithubSquare
-} from 'react-icons/fa';
-import {FaComputer} from 'react-icons/fa6'
 
 
 export const MenuLayout = ({ children }) => {
