@@ -16,10 +16,10 @@ export const Footer = () => {
                     <h1 className='w-full text-3xl font-bold text-[#1190cb]'>Fit Partner.</h1>
                     <p className='py-4'>Aplicación que permite mantener un registro de tus entrenamientos y aumentar tu motivación a llevar una vida más saludable.</p>
                     <div className='flex justify-between md:w-[75%] mt-1'>
-                        <ButtonLink to='https://www.linkedin.com/in/cris-duran/'><FaLinkedin size={60} /></ButtonLink>
-                        <ButtonLink to='https://github.com/MagicDog12/FitPartner'><FaGithubSquare size={60} /></ButtonLink>
-                        <ButtonLink to='https://telegram.me/Magic_Dog'><FaTelegramPlane size={60} /></ButtonLink>
-                        <ButtonLink to='https://cduran.cl/'><FaComputer size={60} /></ButtonLink>
+                        <ButtonLink to='https://www.linkedin.com/in/cris-duran/'><FaLinkedin size={50} /></ButtonLink>
+                        <ButtonLink to='https://github.com/MagicDog12/FitPartner'><FaGithubSquare size={50} /></ButtonLink>
+                        <ButtonLink to='https://telegram.me/Magic_Dog'><FaTelegramPlane size={50} /></ButtonLink>
+                        <ButtonLink to='https://cduran.cl/'><FaComputer size={50} /></ButtonLink>
                     </div>
                 </div>
                 <div className='lg:col-span-2 lg:col-start-4 flex justify-between mt-6'>
