@@ -33,19 +33,19 @@ export const Header = () => {
                 <ButtonLink to='/home'><img src={logo} alt="Fit Partner" className="w-40 cursor-pointer" /></ButtonLink>
                 <ul className="flex-1 text-center">
                     <li className="list-none inline-block px-5">
-                        <ButtonLink to='/search' tailwind="underline decoration-indigo-500/30 px-2">Buscar ejercicio</ButtonLink>
+                        <ButtonLink to='/search' tailwind="underline decoration-indigo-500/60 px-2 text-lg">Buscar ejercicio</ButtonLink>
                     </li>
                     <li className="list-none inline-block px-5">
-                        <ButtonLink to='/new' tailwind="underline decoration-indigo-500/30 px-2">Nuevo entrenamiento</ButtonLink>
+                        <ButtonLink to='/new' tailwind="underline decoration-indigo-500/60 px-2 text-lg">Nuevo entrenamiento</ButtonLink>
                     </li>
                     <li className="list-none inline-block px-5">
-                        <ButtonLink to='/statistics' tailwind="underline decoration-indigo-500/30 px-2">Estadísticas</ButtonLink>
+                        <ButtonLink to='/statistics' tailwind="underline decoration-indigo-500/60 px-2 text-lg">Estadísticas</ButtonLink>
                     </li>
                     <li className="list-none inline-block px-5">
-                        <ButtonLink to='/profile' tailwind="underline decoration-indigo-500/30 px-2">Perfil</ButtonLink>
+                        <ButtonLink to='/profile' tailwind="underline decoration-indigo-500/60 px-2 text-lg">Perfil</ButtonLink>
                     </li>
                 </ul>
-                <img src={logoutLogo} alt="Cerrar Sesión" className="w-8 cursor-pointer" onClick={handleLogout} />
+                <img src={logoutLogo} alt="Cerrar Sesión" className="w-10 cursor-pointer" onClick={handleLogout} />
             </nav >
         </header >
     )
