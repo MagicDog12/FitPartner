@@ -5,6 +5,16 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import { API_URL } from '../auth/constants';
 import NotificationContext from '../context/NotificationContext';
 
+const checkEmail = (email) => {
+    const validEmail = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
+    return validEmail.test(email);
+}
+
+const checkPassword = (password) => {
+    const validPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+    return validPassword.test(password);
+}
+
 export const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -28,6 +38,15 @@ export const Login = () => {
 
         if (email === "" || password === "") {
             setErrorResponse("Llenar todos los campos");
+            return;
+        }
+        if (!checkEmail(email)) {
+            setErrorResponse("Email no cumple el formato: example@example.com");
+            return;
+        }
+        if (!checkPassword(password)) {
+            setErrorResponse("Contraseña tiene que poseer minímo 8 caracteres y al menos un número, una letra mayúscula y minúscula");
+            setErrorResponse("Credenciales incorrectas.");
             return;
         }
 

@@ -4,6 +4,22 @@ import { useAuth } from '../auth/AuthProvider';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { API_URL } from '../auth/constants';
 
+const checkEmail = (email) => {
+    const validEmail = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
+    return validEmail.test(email);
+}
+
+const checkPassword = (password) => {
+    const validPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+    return validPassword.test(password);
+}
+
+const checkUsername = (username) => {
+    const validUserName = /^[a-zA-Z0-9_.]+$/;
+    return validUserName.test(username);
+
+}
+
 export const Signup = () => {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
@@ -25,6 +41,19 @@ export const Signup = () => {
             setErrorResponse("Llenar todos los campos");
             return;
         }
+        if (!checkUsername(username)) {
+            setErrorResponse("Nombre de usuario no debe poseer espacios");
+            return;
+        }
+        if (!checkEmail(email)) {
+            setErrorResponse("Email no cumple el formato: example@example.com");
+            return;
+        }
+        if (!checkPassword(password)) {
+            setErrorResponse("Contraseña tiene que poseer minímo 8 caracteres y al menos un número, una letra mayúscula y minúscula");
+            return;
+        }
+
         try {
             const response = await fetch(`${API_URL}/auth/signup`, {
                 method: "POST",
@@ -83,7 +112,7 @@ export const Signup = () => {
                                     type={"password"}
                                 />
                             </div>
-                            {!!errorResponse && <div className='errorMessage'>{errorResponse}</div>}
+                            {!!errorResponse && <div className='errorMessage text-red-500 py-2'>{errorResponse}</div>}
                             <div className='mt-8 flex flex-col gap-y-4'>
                                 <button
                                     className='active:scale-[.98] active:duration-75 transition-all hover:scale-[1.01]  ease-in-out transform py-4 bg-violet-500 rounded-xl text-white font-bold text-lg'>Crear cuenta</button>

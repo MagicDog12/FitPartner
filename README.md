@@ -25,7 +25,7 @@ npm run start
 ## Version 1.0:
 Se implementa una base de la aplicación con registro de usuarios e inicio de sesión usando [JWT](https://jwt.io/) (para mantener la sesión iniciada) y [bcrypt] (https://www.npmjs.com/package/bcrypt) (para encriptar las contraseñas). Además se deja funcional todo el flujo de registrase -> iniciar sesión -> cerrar sesión, tanto en el lado del servidor como en el lado de la interfaz de usuario. También en el lado del client se puede acceder a la información de home solo si está autenticado el usuario.
 
-## Version 1.1:
+## Próximamente:
 Lista de cosas por hacer:
 1. Se necesita crear una validación en el client y en el server de los inputs de username, email y password.
 2. Se necesita crear el flujo de recuperar contraseña enviando un correo con un link (usando tokens) para cambiar la contraseña.
