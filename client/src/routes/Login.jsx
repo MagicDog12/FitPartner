@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { ButtonLink } from '../components/ButtonLink';
 import { useAuth } from '../auth/AuthProvider';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { API_URL } from '../auth/constants';
+import NotificationContext from '../context/NotificationContext';
 
 export const Login = () => {
     const [email, setEmail] = useState("");
@@ -11,6 +12,12 @@ export const Login = () => {
 
     const auth = useAuth();
     const goTo = useNavigate();
+
+    const { notificationHandler } = useContext(NotificationContext);
+
+    const handlerSuccessLogin = (message) => {
+        notificationHandler({ type: 'success', message });
+    }
 
     if (auth.isAuthenticated) {
         return (<Navigate to='/home' />);
@@ -23,6 +30,7 @@ export const Login = () => {
             setErrorResponse("Llenar todos los campos");
             return;
         }
+
         try {
             const response = await fetch(`${API_URL}/auth/login`, {
                 method: "POST",
@@ -36,6 +44,7 @@ export const Login = () => {
             })
             if (response.ok) {
                 console.log("El usuario inició sesión correctamente");
+                handlerSuccessLogin('Inicio de sesión correcto');
                 setErrorResponse("");
                 const json = await response.json();
                 if (json.body.accessToken && json.body.refreshToken) {
@@ -78,7 +87,7 @@ export const Login = () => {
                                     type={"password"}
                                 />
                             </div>
-                            {!!errorResponse && <div className='errorMessage'>{errorResponse}</div>}
+                            {!!errorResponse && <div className='errorMessage text-red-500 py-2'>{errorResponse}</div>}
                             <div className='mt-3 lg:mt-8 flex justify-between items-center'>
                                 <div>
                                     <input type="checkbox" id='remember' />

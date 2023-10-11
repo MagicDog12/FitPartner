@@ -1,5 +1,6 @@
 import { Header } from "./Header";
 import { Footer } from "./Footer";
+import Notification from '../util/Notification';
 
 
 export const MenuLayout = ({ children }) => {
@@ -11,6 +12,7 @@ export const MenuLayout = ({ children }) => {
                 {children}
             </main>
            <Footer></Footer>
+           <Notification />
         </div >
 
     )
