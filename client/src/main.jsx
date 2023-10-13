@@ -10,6 +10,10 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { ProtectedRoute } from './routes/ProtectedRoute.jsx';
 import { AuthProvider } from './auth/AuthProvider.jsx';
 import { NotificationProvider } from './context/NotificationContext';
+import { Profile } from './routes/Profile.jsx';
+import { Search } from './routes/Search.jsx';
+import { NewTraining } from './routes/NewTraining.jsx';
+import { Statistics } from './routes/Statistics.jsx';
 // import './components/Formulario.css';
 
 const router = createBrowserRouter([
@@ -36,6 +40,46 @@ const router = createBrowserRouter([
       {
         path: '/home',
         element: <Home />,
+      },
+    ],
+  },
+  {
+    path: '/',
+    element: <ProtectedRoute />,
+    children: [
+      {
+        path: '/profile',
+        element: <Profile />,
+      },
+    ],
+  },
+  {
+    path: '/',
+    element: <ProtectedRoute />,
+    children: [
+      {
+        path: '/search',
+        element: <Search />,
+      },
+    ],
+  },
+  {
+    path: '/',
+    element: <ProtectedRoute />,
+    children: [
+      {
+        path: '/new-training',
+        element: <NewTraining />,
+      },
+    ],
+  },
+  {
+    path: '/',
+    element: <ProtectedRoute />,
+    children: [
+      {
+        path: '/statistics',
+        element: <Statistics />,
       },
     ],
   },

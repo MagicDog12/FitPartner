@@ -36,7 +36,7 @@ export const Header = () => {
                         <ButtonLink to='/search' tailwind="underline decoration-indigo-500/60 px-2 text-lg">Buscar ejercicio</ButtonLink>
                     </li>
                     <li className="list-none inline-block px-5">
-                        <ButtonLink to='/new' tailwind="underline decoration-indigo-500/60 px-2 text-lg">Nuevo entrenamiento</ButtonLink>
+                        <ButtonLink to='/new-training' tailwind="underline decoration-indigo-500/60 px-2 text-lg">Nuevo entrenamiento</ButtonLink>
                     </li>
                     <li className="list-none inline-block px-5">
                         <ButtonLink to='/statistics' tailwind="underline decoration-indigo-500/60 px-2 text-lg">Estadísticas</ButtonLink>
