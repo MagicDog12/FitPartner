@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { Login } from "./routes/Login.jsx";
 import { Signup } from './routes/Signup.jsx';
 import { ForgotPassword } from "./routes/ForgotPassword.jsx";
+import { ResetPassword } from "./routes/ResetPassword.jsx";
 import { Home } from './routes/Home.jsx';
 import './index.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
   {
     path: '/forgot-password',
     element: <ForgotPassword />
+  },
+  {
+    path: '/reset-password/:token',
+    element: <ResetPassword />,
   },
   {
     path: '/',

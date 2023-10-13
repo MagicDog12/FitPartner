@@ -8,8 +8,8 @@ const sign = (payload, isAccessToken) => {
             ? config.jwtAccessTokenSecret
             : config.jwtRefreshTokenSecret,
         {
-            algorithm: 'HS256',
-            expiresIn: 3600
+            algorithm: config.jwtAlgorithm,
+            expiresIn: config.jwtExpires
         }
     );
 };

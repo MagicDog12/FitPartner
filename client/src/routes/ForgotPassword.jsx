@@ -33,13 +33,9 @@ export const ForgotPassword = () => {
                 })
             })
             if (response.ok) {
-                console.log("El correo se envió correctamente");
                 setErrorResponse("");
                 const json = await response.json();
                 console.log(json);
-                if (json.body.accessToken && json.body.refreshToken) {
-                    auth.saveUser(json);
-                }
                 goTo('/');
             } else {
                 console.log("Algo ocurrió");

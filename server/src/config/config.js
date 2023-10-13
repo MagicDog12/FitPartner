@@ -18,9 +18,18 @@ export default {
   dbHost: process.env.DB_HOST,
   dbPort: process.env.DB_PORT,
 
-  jwtAlgorithm: process.env.JWT_ALGO,
+  jwtAlgorithm: process.env.ALGORITHM_TOKEN,
   jwtAccessTokenSecret: process.env.ACCESS_TOKEN_SECRET,
   jwtRefreshTokenSecret: process.env.REFRESH_TOKEN_SECRET,
+  jwtEmailTokenSecret: process.env.EMAIL_TOKEN_SECRET,
+  jwtExpires: process.env.TOKEN_EXPIRES,
+  jwtEmailExpires: process.env.EMAIL_TOKEN_EXPIRES,
+
+
+  email: process.env.EMAIL_ADDRESS,
+  emailPassword: process.env.EMAIL_PASSWORD,
+  emailHost: process.env.EMAIL_HOST,
+  emailPort: process.env.EMAIL_PORT,
 
   api: {
     prefix: '/api',
