@@ -6,7 +6,7 @@ import { ForgotPassword } from "./routes/ForgotPassword.jsx";
 import { ResetPassword } from "./routes/ResetPassword.jsx";
 import { Home } from './routes/Home.jsx';
 import './index.css';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, createHashRouter } from 'react-router-dom';
 import { ProtectedRoute } from './routes/ProtectedRoute.jsx';
 import { AuthProvider } from './auth/AuthProvider.jsx';
 import { NotificationProvider } from './context/NotificationContext';
@@ -16,7 +16,7 @@ import { NewTraining } from './routes/NewTraining.jsx';
 import { Statistics } from './routes/Statistics.jsx';
 // import './components/Formulario.css';
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: '/',
     element: <Login />
