@@ -224,7 +224,7 @@ export const forgotPassword = async (req, res) => {
         }
         // Creamos el token de recuperación de contraseña y enviamos el correo con el link
         const token = generateEmailToken({ id: user.id, username: user.username });
-        const link = `http://localhost:3000/reset-password/${token}`;
+        const link = `https://magicdog12.github.io/FitPartner/reset-password/${token}`;
         const info = await transporter.sendMail({
             from: config.email,
             to: email,
