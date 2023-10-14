@@ -1,4 +1,3 @@
-import './Home.css';
 import { useAuth } from "../auth/AuthProvider";
 import { useEffect, useState } from 'react';
 import { API_URL } from '../auth/constants';

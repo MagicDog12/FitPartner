@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
 
-export const ButtonLink = ({ to, children }) => {
-  return <Link to={to}><button>{children}</button></Link>;
+export const ButtonLink = ({ to, children, tailwind }) => {
+  return <Link to={to}><button className={tailwind} >{children}</button></Link>;
 };
