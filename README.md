@@ -30,5 +30,11 @@ npm run start
 5. Se necesita crear el flujo de recuperar contraseña enviando un correo con un link (usando tokens) para cambiar la contraseña.
 6. Se incorporará css con tailwind para mejorar la interfaz de usuario en las pestañas de login, registro, recuperar contraseña e inicio.
 
+## Version 2.0:
+1. Se agregar la pantalla de carga mientras se esperan respuestas del server.
+
 ## Próximamente:
 Lista de cosas por hacer:
+
+1. Agregar vista de perfil con un formulario para editar la información
+2. Se agrega la compatibilidad del home page en distintas resoluciones
