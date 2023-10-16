@@ -10,7 +10,7 @@ import { FaComputer } from 'react-icons/fa6'
 export const Footer = () => {
 
     return (
-        <footer className="container max-w-full bg-gray-700 absolute bottom-0">
+        <footer className="container max-w-full bg-gray-700 lg:absolute bottom-0">
             <div className='max-w-[1240px] mx-auto py-2 px-4 grid lg:grid-cols-5 gap-8 text-gray-300'>
                 <div className="lg:col-span-2 lg:col-start-1 pt-4">
                     <h1 className='w-full text-3xl font-bold text-[#1190cb]'>Fit Partner.</h1>
